@@ -1,5 +1,101 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: all;
+}
+
+@theme {
+  /* Colors - CyberCore Palette */
+  --color-primary: #FACC15; /* Golden Yellow */
+  --color-primary-content: #000000;
+  --color-secondary: #3B82F6; /* Tech Blue */
+  --color-background: #050505;
+  --color-surface: #0A0A0A;
+  --color-surface-bright: #171717;
+  --color-on-surface: #F4F4F5;
+  --color-on-surface-variant: #A1A1AA;
+  --color-outline: #27272A;
+  --color-outline-variant: #3F3F46;
+
+  /* Typography */
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-display: 'Space Mono', monospace;
+
+  /* Radius - More rigid for technical feel */
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+}
+
+:root {
+  --background: #050505;
+  --foreground: #F4F4F5;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6, .tech-font {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+/* Technical Utility Classes */
+
+.tech-container {
+  @apply max-w-7xl mx-auto px-6;
+}
+
+.tech-section-label {
+  @apply flex items-center gap-2 mb-12;
+}
+
+.tech-section-label span {
+  @apply text-primary font-mono text-sm tracking-[0.3em] font-bold;
+}
+
+.tech-section-label .line {
+  @apply h-px flex-1 bg-outline-variant/30;
+}
+
+.tech-border {
+  @apply border border-outline/50 hover:border-primary/50 transition-all duration-300;
+}
+
+.glass-card {
+  @apply bg-surface/80 border border-outline/30 backdrop-blur-sm transition-all duration-300;
+}
+
+.terminal-header {
+  @apply flex items-center justify-between p-2 px-4 bg-outline/20 border-b border-outline/30 font-mono text-[10px] text-on-surface-variant uppercase tracking-widest;
+}
+
+.btn-tech {
+  @apply px-6 py-2 bg-primary text-black font-mono text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors flex items-center gap-2;
+}
+
+.btn-tech-outline {
+  @apply px-6 py-2 border border-primary/50 text-primary font-mono text-xs font-bold uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-2;
+}
+
+.divider {
+  @apply h-px w-full bg-outline-variant/20 my-16;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+  @apply text-primary ml-1;
 }

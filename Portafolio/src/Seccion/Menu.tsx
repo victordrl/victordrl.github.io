@@ -1,120 +1,80 @@
 // MENU
-import { useRef } from "react";
-
-import { IoHomeSharp } from "react-icons/io5";
-import { FaFileContract } from "react-icons/fa";
-import { IoPerson } from "react-icons/io5";
-import { IoStatsChartSharp } from "react-icons/io5";
-import { RiGraduationCapFill } from "react-icons/ri";
-import { IoBriefcaseSharp } from "react-icons/io5";
-import { BiSolidInfoSquare } from "react-icons/bi";
-
-import { IoMenuSharp } from "react-icons/io5";
+import { IoHomeOutline, IoPersonOutline, IoStatsChartOutline, IoBriefcaseOutline, IoMailOutline, IoTerminalOutline } from "react-icons/io5";
 
 const menu_item = [
   {
-    datatip: "Home",
-    icon: <IoHomeSharp className="sm:size-6 size-5" />,
+    datatip: "START_NODE",
+    icon: <IoHomeOutline className="size-5" />,
     path: "#home",
   },
   {
-    datatip: "About me",
-    icon: <IoPerson className="sm:size-6 size-5" />,
+    datatip: "CORE_BIO",
+    icon: <IoPersonOutline className="size-5" />,
     path: "#me",
   },
   {
-    datatip: "Experience",
-    icon: <FaFileContract className="sm:size-6 size-5" />,
-    path: "#xp",
-  },
-  {
-    datatip: "Skills",
-    icon: <IoStatsChartSharp className="sm:size-6 size-5" />,
+    datatip: "TECH_STACK",
+    icon: <IoStatsChartOutline className="size-5" />,
     path: "#skil",
   },
   {
-    datatip: "Education",
-    icon: <RiGraduationCapFill className="sm:size-6 size-5" />,
-    path: "#educ",
-  },
-  {
-    datatip: "Portfolio",
-    icon: <IoBriefcaseSharp className="sm:size-6 size-5" />,
+    datatip: "WORK_REPOS",
+    icon: <IoBriefcaseOutline className="size-5" />,
     path: "#proyec",
   },
   {
-    datatip: "Info",
-    icon: <BiSolidInfoSquare className="sm:size-6 size-5" />,
+    datatip: "CAREER_LOGS",
+    icon: <IoTerminalOutline className="size-5" />,
+    path: "#xp",
+  },
+  {
+    datatip: "CONTACT_LINK",
+    icon: <IoMailOutline className="size-5" />,
     path: "#info",
   },
 ];
 
 export default function Menu() {
-  const drawerRef = useRef<HTMLInputElement>(null);
-
   return (
-    <div className="fixed inset-2 flex sm:items-center w-16 z-50">
-      <div className="">
-        <div className="drawer">
-          <input
-            id="my-drawer"
-            type="checkbox"
-            className="drawer-toggle"
-            ref={drawerRef}
-          />
-          <div className="drawer-content">
-            {/* Button to open the drawer */}
-            <label
-              htmlFor="my-drawer"
-              className="btn btn-primary drawer-button sm:hidden"
-            >
-              <IoMenuSharp />
-            </label>
-          </div>
-          <div className="drawer-side sm:hidden w-screen h-full">
-            <label
-              htmlFor="my-drawer"
-              aria-label="close sidebar"
-              className="drawer-overlay"
-            ></label>
-            <ul className="menu bg-primary text-primary-content min-h-full w-max gap-2 ">
-              {menu_item.map((item, index) => (
-                <li key={index}>
-                  <a
-                    className="tooltip tooltip-right"
-                    href={item.path}
-                    data-tip={item.datatip}
-                    onClick={() => {
-                      if (drawerRef.current) {
-                        drawerRef.current.checked = false;
-                      }
-                    }}
-                  >
-                    {item.icon}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-      <ul
-        tabIndex={0}
-        className="hidden sm:menu sm:bg-primary text-primary-content rounded-box shadow-2xl sm:flex justify-center sm:h-[400px] gap-4 z-50"
-      >
+    <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center">
+      {/* HUD Vertical Navigation */}
+      <div className="flex flex-col gap-4 p-2 bg-surface border border-outline/30 shadow-2xl relative">
+        {/* Decorative HUD Accents */}
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-px h-4 bg-primary/30"></div>
+        <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-px h-4 bg-primary/30"></div>
+        
         {menu_item.map((item, index) => (
-          <li>
-            <a
-              className="tooltip tooltip-right"
-              key={index}
-              href={item.path}
-              data-tip={item.datatip}
-            >
+          <a
+            key={index}
+            href={item.path}
+            className="group relative flex items-center justify-center size-10 border border-transparent hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+          >
+            <div className="text-on-surface-variant group-hover:text-primary transition-colors">
               {item.icon}
-            </a>
-          </li>
+            </div>
+            
+            {/* Tooltip Label */}
+            <span className="absolute left-full ml-6 px-3 py-1 bg-surface border border-primary/20 text-[8px] font-mono font-bold tracking-[0.3em] text-primary opacity-0 translate-x-[-10px] group-hover:opacity-100 group-hover:translate-x-0 transition-all pointer-events-none whitespace-nowrap uppercase italic shadow-xl">
+              [ {item.datatip} ]
+            </span>
+            
+            {/* Active Indicator (Decorative) */}
+            <div className="absolute left-0 top-0 w-[1px] h-0 bg-primary group-hover:h-full transition-all duration-500"></div>
+          </a>
         ))}
-      </ul>
+      </div>
+      
+      {/* System Status Label */}
+      <div className="mt-8 vertical-text font-mono text-[8px] text-on-surface-variant/20 tracking-[0.5em] uppercase pointer-events-none">
+        CORE_NAV_SYSTEM_v4.0
+      </div>
+
+      <style>{`
+        .vertical-text {
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+        }
+      `}</style>
     </div>
   );
 }

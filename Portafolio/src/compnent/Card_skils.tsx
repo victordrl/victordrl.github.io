@@ -1,36 +1,39 @@
 // CARD INFO SKILS
-
 interface Props {
   children: React.ReactNode;
   titulo: string;
   contenido: string;
 }
 
-export default function CardInfo({ children, titulo, contenido }: Props) {
-  let badgeClass = "badge badge-xs mx-1";
-  switch (contenido) {
-    case "Avanzado":
-      badgeClass += " badge-primary";
-      break;
-    case "Intermedio":
-      badgeClass += " badge-secondary";
-      break;
-    case "Básico":
-      badgeClass += " badge-accent";
-      break;
-    default:
-      badgeClass += " badge-accent";
-      break;
-  }
-
+export default function CardSkils({ children, titulo, contenido }: Props) {
   return (
-    <div className="flex w-[260px] py-4">
-      {children}
-      <div className="flex flex-col justify-center p-2 gap-1">
-        <div>{titulo}</div>
-        <div className="flex text-xs uppercase font-semibold opacity-60 ite">
-          {/* <div className={badgeClass}></div> */}
-          {contenido}
+    <div className="glass-card flex items-center p-4 gap-4 w-full tech-border group">
+      <div className="flex-shrink-0 bg-surface-bright p-3 border border-outline/20 group-hover:border-primary/30 transition-colors">
+        <div className="grayscale group-hover:grayscale-0 transition-all">
+          {children}
+        </div>
+      </div>
+      <div className="flex flex-col gap-1 flex-1">
+        <div className="font-mono font-bold text-sm text-white uppercase tracking-tight">{titulo}</div>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className={`size-1.5 rounded-full animate-pulse ${
+              contenido === "Avanzado" ? "bg-primary" : 
+              contenido === "Intermedio" ? "bg-secondary" : 
+              "bg-tertiary"
+            }`}></div>
+            <span className="text-[8px] uppercase tracking-[0.2em] font-bold text-on-surface-variant">
+              {contenido}
+            </span>
+          </div>
+          {/* Technical Progress Bar */}
+          <div className="w-16 h-[2px] bg-outline/20 rounded-full overflow-hidden hidden sm:block">
+            <div className={`h-full transition-all duration-1000 ${
+              contenido === "Avanzado" ? "w-[90%] bg-primary" : 
+              contenido === "Intermedio" ? "w-[65%] bg-secondary" : 
+              "w-[35%] bg-tertiary"
+            }`}></div>
+          </div>
         </div>
       </div>
     </div>

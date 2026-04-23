@@ -1,32 +1,39 @@
-@import "tailwindcss";
-@plugin "daisyui" {
-  themes: all;
+/* App.css - CyberCore Specific Overrides */
+
+.bg-background {
+  background-color: var(--color-background);
 }
 
-.logo {
-  @apply w-44 h-40;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.perfil {
-  @apply bg-cover;
+::-webkit-scrollbar-track {
+  background: var(--color-background);
 }
 
-.cuerpito {
-  @apply flex flex-col items-center sm:border-2 border-base-200 shadow-accent h-min bg-base-300 sm:max-w-4xl mx-auto -mt-8 p-4;
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline);
+  border-radius: 0px;
 }
 
-.sub-title {
-  @apply sm:font-bold font-semibold sm:text-4xl text-3xl text-center sm:pb-4 pb-2;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
 }
 
-.mini-title {
-  @apply sm:text-3xl text-xl p-2 opacity-90;
+/* Section Smooth Scroll */
+html {
+  scroll-behavior: smooth;
 }
 
-.minisub-title {
-  @apply sm:text-lg opacity-70 px-2;
+/* Selection */
+::selection {
+  background: var(--color-primary);
+  color: #000;
 }
 
-.menu-contenido {
-  @apply menu bg-primary text-primary-content rounded-box shadow-2xl flex justify-center h-[400px] gap-4 z-50;
+/* Layout Utilities */
+.page-container {
+  @apply relative min-h-screen overflow-x-hidden;
 }

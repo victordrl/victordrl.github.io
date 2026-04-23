@@ -1,166 +1,68 @@
-//MIS HABILIDADES
-
+// SKILLS SECCION
 import CardSkils from "../compnent/Card_skils";
 
-const skillsData = [
-  {
-    titulo: "Python",
-    children: (
-      <img
-        src="Python.svg"
-        alt="python logo"
-        className="sm:size-14 size-10"
-      ></img>
-    ),
-    contenido: "Avanzado",
-  },
-  {
-    titulo: "C/C++",
-    children: (
-      <div className="flex">
-        <img src="C.svg" alt="c logo" className="sm:size-14 size-10"></img>
-        <img
-          src="C++ (CPlusPlus).svg"
-          alt="c++ logo"
-          className="sm:size-14 size-10 -ml-4"
-        ></img>
-      </div>
-    ),
-    contenido: "Avanzado",
-  },
-  {
-    titulo: "JavaScript",
-    children: (
-      <div className="flex">
-        <img
-          src="Node.js.svg"
-          alt="js logo"
-          className="sm:size-14 size-10"
-        ></img>
-        <img
-          src="JavaScript.svg"
-          alt="js logo"
-          className="sm:size-14 size-10 -ml-4"
-        ></img>
-      </div>
-    ),
-    contenido: "Intermedio",
-  },
-  {
-    titulo: "HTML/CSS",
-    children: (
-      <div className="flex">
-        <img
-          src="HTML5.svg"
-          alt="html5 logo"
-          className="sm:size-14 size-10"
-        ></img>
-        <img
-          src="CSS3.svg"
-          alt="css3 logo"
-          className="sm:size-14 size-10 -ml-4"
-        ></img>
-        {/* <img
-          src="Tailwind CSS.svg"
-          alt="css3 logo"
-          className="sm:size-14 size-10 -ml-4"
-        ></img> */}
-      </div>
-    ),
-    contenido: "Avanzado",
-  },
-  {
-    titulo: "TypeScript",
-    children: (
-      <img
-        src="TypeScript.svg"
-        alt="js logo"
-        className="sm:size-14 size-10"
-      ></img>
-    ),
-    contenido: "Aprendiendo",
-  },
+const frontend_skills = [
+  { logo: "/React.svg", name: "React", level: "Avanzado" },
+  { logo: "/Tailwind CSS.svg", name: "Tailwind", level: "Avanzado" },
+  { logo: "/HTML5.svg", name: "HTML5", level: "Avanzado" },
+  { logo: "/CSS3.svg", name: "CSS3", level: "Avanzado" },
+  { logo: "/JavaScript.svg", name: "JavaScript", level: "Intermedio" },
 ];
 
-const toolsData = [
-  {
-    titulo: "React",
-    children: (
-      <img src="React.svg" alt="React logo" className="sm:size-14 size-10" />
-    ),
-    contenido: "Intermedio",
-  },
-  {
-    titulo: "MySQL",
-    children: (
-      <img src="MySQL.svg" alt="MySQL logo" className="sm:size-14 size-10" />
-    ),
-    contenido: "Avanzado",
-  },
-  {
-    titulo: "Qt Designer",
-    children: (
-      <img
-        src="Qt Framework.svg"
-        alt="Qt Designer logo"
-        className="sm:size-14 size-10"
-      />
-    ),
-    contenido: "Básico",
-  },
-  {
-    titulo: "Git",
-    children: (
-      <img
-        src="GitHub.svg"
-        alt="Git logo"
-        className="sm:size-14 size-10 invert"
-      />
-    ),
-    contenido: "Avanzado",
-  },
-  {
-    titulo: "TensorFlow",
-    children: (
-      <img
-        src="TensorFlow.svg"
-        alt="TensorFlow logo"
-        className="sm:size-14 size-10"
-      />
-    ),
-    contenido: "Aprendiendo",
-  },
+const backend_skills = [
+  { logo: "/Python.svg", name: "Python", level: "Avanzado" },
+  { logo: "/MySQL.svg", name: "MySQL", level: "Avanzado" },
+  { logo: "/GitHub.svg", name: "Git / GitHub", level: "Intermedio" },
 ];
 
 export default function Skils() {
   return (
-    <div id="skil" className="flex flex-col mx-auto  px-4">
-      <h2 className="sub-title">Mis Habilidades</h2>
+    <section id="skil" className="tech-container py-24">
+      {/* Section Label */}
+      <div className="tech-section-label">
+        <span>02 // TECHNICA_CORE</span>
+        <div className="line"></div>
+      </div>
 
-      <h3 className="mini-title">Lenguajes de programación</h3>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] sm:w-3xl gap-4 p-4 shadow">
-        {skillsData.map((skill, index) => (
-          <CardSkils
-            key={index}
-            titulo={skill.titulo}
-            contenido={skill.contenido}
-          >
-            {skill.children}
-          </CardSkils>
-        ))}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        {/* Frontend Module */}
+        <div>
+          <div className="flex items-center gap-4 mb-8 font-mono text-xs font-bold text-primary tracking-[0.2em] uppercase italic">
+            <span>[ MODULE_01: FRONTEND_STACK ]</span>
+            <div className="h-px flex-1 bg-outline/20"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {frontend_skills.map((skill, index) => (
+              <CardSkils key={index} titulo={skill.name} contenido={skill.level}>
+                <img src={skill.logo} alt={skill.name} className="size-8" />
+              </CardSkils>
+            ))}
+          </div>
+        </div>
+
+        {/* Backend & Tools Module */}
+        <div>
+          <div className="flex items-center gap-4 mb-8 font-mono text-xs font-bold text-primary tracking-[0.2em] uppercase italic">
+            <span>[ MODULE_02: BACKEND_CORE ]</span>
+            <div className="h-px flex-1 bg-outline/20"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {backend_skills.map((skill, index) => (
+              <CardSkils key={index} titulo={skill.name} contenido={skill.level}>
+                <img src={skill.logo} alt={skill.name} className="size-8" />
+              </CardSkils>
+            ))}
+          </div>
+          
+          {/* Decorative Terminal Output */}
+          <div className="mt-8 bg-surface-bright/30 border border-outline/20 p-4 font-mono text-[10px] text-on-surface-variant/40 leading-relaxed">
+            <p className="text-primary/50 text-[8px] mb-2 font-bold uppercase tracking-widest">>> SYSTEM_LOGS</p>
+            <p>SKILL_SCAN: COMPLETED</p>
+            <p>INTEGRITY_CHECK: 98.4% SUCCESS</p>
+            <p>COMPATIBILITY_MODE: OPTIMIZED</p>
+          </div>
+        </div>
       </div>
-      <h3 className="mini-title">Tecnologias y Herramientas</h3>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 shadow p-4">
-        {toolsData.map((skill, index) => (
-          <CardSkils
-            key={index}
-            titulo={skill.titulo}
-            contenido={skill.contenido}
-          >
-            {skill.children}
-          </CardSkils>
-        ))}
-      </div>
-    </div>
+    </section>
   );
 }
