@@ -14,7 +14,7 @@ export default function Portafolio() {
       nombre: "Cripty Chat",
       descripcion: "Comunicación segura con cifrado de extremo a extremo (libsodium) y autenticación biométrica WebAuthn.",
       lenguajes: ["Next.js 15", "Socket.io"],
-      video: "/chat_video.mp4",
+      video: "/chat_video_min.mp4",
       path: "https://github.com/victordrl/chat_encrypt",
     },
     {
@@ -28,7 +28,7 @@ export default function Portafolio() {
       nombre: "Survey Models API",
       descripcion: "Motor de análisis predictivo basado en regresión lineal para el procesamiento de encuestas dinámicas.",
       lenguajes: ["FastAPI", "Scikit-Learn"],
-      video: "/-.mp4",
+      video: "/survey_video_min.mp4",
       path: "https://github.com/victordrl/survey-models",
     },
   ];
