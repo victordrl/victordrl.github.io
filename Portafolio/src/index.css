@@ -6,14 +6,15 @@
 
 @theme {
   /* Colors - CyberCore Palette */
-  --color-primary: #FACC15; /* Golden Yellow */
+  --color-primary: #FFD700; /* Golden Yellow */
   --color-primary-content: #000000;
-  --color-secondary: #3B82F6; /* Tech Blue */
-  --color-background: #050505;
+  --color-secondary: #A855F7; /* Fluorescent Purple */
+  --color-background: #000000; 
   --color-surface: #0A0A0A;
   --color-surface-bright: #171717;
   --color-on-surface: #F4F4F5;
-  --color-on-surface-variant: #A1A1AA;
+  --color-on-surface-variant: #A1A1AA; /* Reverted to more subtle gray for secondary text */
+  --color-accent-gold: #FACC15;
   --color-outline: #27272A;
   --color-outline-variant: #3F3F46;
 
@@ -22,7 +23,7 @@
   --font-mono: 'Space Mono', monospace;
   --font-display: 'Space Mono', monospace;
 
-  /* Radius - More rigid for technical feel */
+  /* Radius */
   --radius-sm: 0px;
   --radius-md: 2px;
   --radius-lg: 4px;
@@ -39,6 +40,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.01em;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, .tech-font {
@@ -49,23 +51,29 @@ h1, h2, h3, h4, h5, h6, .tech-font {
 /* Technical Utility Classes */
 
 .tech-container {
-  @apply max-w-7xl mx-auto px-6;
+  @apply max-w-7xl mx-auto px-6 w-full;
 }
 
 .tech-section-label {
-  @apply flex items-center gap-2 mb-12;
+  @apply flex items-center gap-2 mb-8 md:mb-12;
 }
 
 .tech-section-label span {
-  @apply text-primary font-mono text-sm tracking-[0.3em] font-bold;
+  @apply text-primary font-mono text-xs md:text-sm tracking-[0.3em] font-bold uppercase;
 }
 
 .tech-section-label .line {
-  @apply h-px flex-1 bg-outline-variant/30;
+  @apply h-px flex-1 bg-primary/30;
 }
 
 .tech-border {
-  @apply border border-outline/50 hover:border-primary/50 transition-all duration-300;
+  @apply border border-outline/50 transition-all duration-300;
+}
+
+@media (hover: hover) {
+  .tech-border:hover {
+    @apply border-primary/50 shadow-[0_0_15px_rgba(250,204,21,0.1)];
+  }
 }
 
 .glass-card {
@@ -73,19 +81,49 @@ h1, h2, h3, h4, h5, h6, .tech-font {
 }
 
 .terminal-header {
-  @apply flex items-center justify-between p-2 px-4 bg-outline/20 border-b border-outline/30 font-mono text-[10px] text-on-surface-variant uppercase tracking-widest;
+  @apply flex items-center justify-between p-2 px-4 bg-outline/20 border-b border-outline/30 font-mono text-[9px] md:text-[10px] text-primary/70 uppercase tracking-widest;
 }
 
 .btn-tech {
-  @apply px-6 py-2 bg-primary text-black font-mono text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors flex items-center gap-2;
+  @apply px-6 py-2 bg-primary text-black font-mono text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2 active:scale-95;
+}
+
+@media (hover: hover) {
+  .btn-tech:hover {
+    @apply bg-white;
+  }
 }
 
 .btn-tech-outline {
-  @apply px-6 py-2 border border-primary/50 text-primary font-mono text-xs font-bold uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-2;
+  @apply px-6 py-2 border border-primary/50 text-primary font-mono text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2 active:scale-95;
 }
 
-.divider {
-  @apply h-px w-full bg-outline-variant/20 my-16;
+@media (hover: hover) {
+  .btn-tech-outline:hover {
+    @apply bg-primary/10;
+  }
+}
+
+/* Grayscale fix for mobile */
+.img-tech {
+  @apply transition-all duration-700 grayscale;
+}
+
+@media (hover: hover) {
+  .group:hover .img-tech {
+    @apply grayscale-0;
+  }
+}
+
+@media (hover: none) {
+  .img-tech {
+    @apply grayscale-0;
+  }
+}
+
+/* Background Grid - Removed as per user request */
+.bg-grid-tech {
+  display: none;
 }
 
 /* Animations */
@@ -98,4 +136,50 @@ h1, h2, h3, h4, h5, h6, .tech-font {
   content: '_';
   animation: blink 1s step-end infinite;
   @apply text-primary ml-1;
+}
+
+@keyframes scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+/* Responsive Overflows */
+.text-break {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.horizontal-scroll-fix {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Decorative Gold Text Utility */
+.text-gold-decoration {
+  @apply text-primary font-mono uppercase tracking-[0.2em] font-bold;
+}
+
+.text-hud-gold {
+  @apply text-primary/70 font-mono uppercase tracking-[0.2em] font-bold text-[10px];
+}
+
+.text-hud-purple {
+  @apply text-secondary/70 font-mono uppercase tracking-[0.2em] font-bold text-[10px];
+}
+
+/* Matrix Falling Animation */
+@keyframes matrix-fall {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.animate-matrix {
+  animation: matrix-fall linear infinite;
 }

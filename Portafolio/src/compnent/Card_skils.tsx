@@ -8,8 +8,8 @@ interface Props {
 export default function CardSkils({ children, titulo, contenido }: Props) {
   return (
     <div className="glass-card flex items-center p-4 gap-4 w-full tech-border group">
-      <div className="flex-shrink-0 bg-surface-bright p-3 border border-outline/20 group-hover:border-primary/30 transition-colors">
-        <div className="grayscale group-hover:grayscale-0 transition-all">
+      <div className="flex-shrink-0 bg-surface-bright p-3 border border-secondary/20 group-hover:border-primary/30 transition-colors">
+        <div className="img-tech">
           {children}
         </div>
       </div>

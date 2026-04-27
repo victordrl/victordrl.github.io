@@ -11,11 +11,11 @@ export default function Portafolio() {
       path: "https://github.com/victordrl/PUZZLE",
     },
     {
-      nombre: "Poker Neural Network",
-      descripcion: "Simulación de múltiples salas de juego con integración de lógica distribuida y análisis de tiempo real.",
-      lenguajes: ["REACT_TS", "FASTAPI_BACKEND"],
-      image: "/poker_img.png",
-      path: "https://github.com/victordrl/POKER",
+      nombre: "Cripty Chat",
+      descripcion: "Comunicación segura con cifrado de extremo a extremo (libsodium) y autenticación biométrica WebAuthn.",
+      lenguajes: ["Next.js 15", "Socket.io"],
+      video: "/chat_video.mp4",
+      path: "https://github.com/victordrl/chat_encrypt",
     },
     {
       nombre: "Survey Intelligence",
@@ -25,24 +25,24 @@ export default function Portafolio() {
       path: "https://github.com/victordrl/SURVEY-MNAGER",
     },
     {
-      nombre: "Schedule Optimizer",
-      descripcion: "Sistema de optimización logística para la gestión de colisiones en flujos de datos temporales.",
-      lenguajes: ["REACT_TS", "TAILWIND_V4"],
-      image: "/horario_img.png",
-      path: "https://github.com/victordrl/Hypsi",
+      nombre: "Survey Models API",
+      descripcion: "Motor de análisis predictivo basado en regresión lineal para el procesamiento de encuestas dinámicas.",
+      lenguajes: ["FastAPI", "Scikit-Learn"],
+      video: "/-.mp4",
+      path: "https://github.com/victordrl/survey-models",
     },
   ];
 
   return (
-    <section id="proyec" className="tech-container py-24">
-      {/* Section Label */}
+    <section id="proyec" className="tech-container py-24 relative overflow-hidden">
+      {/* Section Label - Gold Decoration */}
       <div className="tech-section-label">
-        <span>03 // SELECTED_WORKS</span>
-        <div className="line"></div>
+        <span className="text-primary font-bold">03 // SELECTED_WORKS_REPOSITORY</span>
+        <div className="line !bg-primary/40"></div>
       </div>
 
       {/* Featured Technical Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
         {proyectos.map((proyecto, index) => (
           <Card_P
             key={index}
@@ -50,23 +50,30 @@ export default function Portafolio() {
             descripcion={proyecto.descripcion}
             lenguajes={proyecto.lenguajes}
             image={proyecto.image}
+            video={proyecto.video}
             path={proyecto.path}
           />
         ))}
       </div>
 
-      {/* Technical Footer Accent */}
-      <div className="mt-16 border border-dashed border-outline/30 p-8 flex flex-col sm:flex-row justify-between items-center gap-6">
-        <div className="font-mono text-xs text-on-surface-variant uppercase tracking-widest italic opacity-50">
+      {/* Technical Footer Accent - Gold Text */}
+      <div className="mt-16 border border-dashed border-primary/20 p-8 flex flex-col sm:flex-row justify-between items-center gap-6 bg-surface-bright/20 relative">
+        <div className="absolute top-0 left-0 px-2 bg-primary text-black font-mono text-[6px] font-bold">SOURCE_MAP_SCAN</div>
+        <div className="font-mono text-xs text-primary uppercase tracking-[0.2em] font-bold italic">
           // SCANNING_REMAINING_REPOS: 04_OBJECTS_DETECTED
         </div>
         <a 
           href="https://github.com/victordrl" 
           target="_blank"
-          className="btn-tech-outline"
+          className="btn-tech-outline group"
         >
-          VIEW_ALL_REPOSITORY_SOURCES >>
+          <span className="group-hover:text-white transition-colors">VIEW_ALL_REPOSITORY_SOURCES {'>>'}</span>
         </a>
+      </div>
+
+      {/* HUD background labels */}
+      <div className="absolute bottom-4 right-6 font-mono text-[7px] text-primary/10 tracking-[0.5em] uppercase hidden lg:block">
+        OBJECT_DETECTION_ALGORITHM_RUNNING
       </div>
     </section>
   );
